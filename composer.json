@@ -1,0 +1,19 @@
+{
+	"name": "undefinedoffset/gridfielditemtype",
+	"description": "Adds type/class picking functionality to SilverStripe 3.0's GridField",
+	"type": "silverstripe-module",
+	"keywords": ["silverstripe", "gridfield"],
+	"authors": [
+		{
+			"name": "Ed Chipman",
+			"homepage": "http://www.edchipman.ca",
+			"role": "Developer"
+		}
+	],
+
+	"require":
+	{
+		"silverstripe/framework": "3.*",
+		"composer/installers": "*"
+	}
+}
