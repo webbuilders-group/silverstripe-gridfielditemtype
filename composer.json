@@ -1,5 +1,5 @@
 {
-	"name": "undefinedoffset/gridfielditemtype",
+	"name": "webbuilders-group/gridfielditemtype",
 	"description": "Adds type/class picking functionality to SilverStripe 3.0's GridField",
 	"type": "silverstripe-module",
 	"keywords": ["silverstripe", "gridfield"],
