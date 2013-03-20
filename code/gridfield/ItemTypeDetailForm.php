@@ -36,11 +36,11 @@ class ItemTypeDetailForm_ItemRequest extends GridFieldDetailForm_ItemRequest {
      * @param {SS_HTTPRequest} $request HTTP Request
      * @return {string} HTML to be rendered
      */
-	public function edit($request) {
-		$controller=$this->getToplevelController();
-		$form=$this->ItemEditForm($this->gridField, $request);
+    public function edit($request) {
+        $controller=$this->getToplevelController();
+        $form=$this->ItemEditForm($this->gridField, $request);
         
-		if($this->record->ID==0) {
+        if($this->record->ID==0) {
             if($request->getVar('ItemType')) {
                 if($addButton=$this->gridField->getConfig()->getComponentByType('AddNewItemTypeButton')) {
                     $values=$addButton->getRawDropdownValues();
@@ -54,23 +54,23 @@ class ItemTypeDetailForm_ItemRequest extends GridFieldDetailForm_ItemRequest {
                     user_error('You must have the GridField Component "AddNewItemTypeButton" in your GridField config', E_USER_ERROR);
                 }
             }
-		}
-		
-		
-		$return=$this->customise(array(
-                            			'Backlink'=>($controller->hasMethod('Backlink') ? $controller->Backlink():$controller->Link()),
-                            			'ItemEditForm'=>$form,
-                            		))->renderWith($this->template);
+        }
         
-		if($request->isAjax()) {
-			return $return;
-		}else {
-			// If not requested by ajax, we need to render it within the controller context+template
-			return $controller->customise(array(
-                                				// TODO CMS coupling
-                                				'Content' => $return,
-                                			));
-		}
-	}
+        
+        $return=$this->customise(array(
+                                        'Backlink'=>($controller->hasMethod('Backlink') ? $controller->Backlink():$controller->Link()),
+                                        'ItemEditForm'=>$form,
+                                    ))->renderWith($this->template);
+        
+        if($request->isAjax()) {
+            return $return;
+        }else {
+            // If not requested by ajax, we need to render it within the controller context+template
+            return $controller->customise(array(
+                                                // TODO CMS coupling
+                                                'Content' => $return,
+                                            ));
+        }
+    }
 }
 ?>
