@@ -40,8 +40,21 @@
          * Overloads the LeftAndMain handle for grid field actions and use the href of the item type button
          */
 	    $('.cms .ss-gridfield .new-item-type-add').entwine({
+	        onmatch: function() {
+	            var gridField=this.getGridField();
+                var dropdown=gridField.find('.addNewItemTypeButton select.dropdown');
+                if(dropdown.val()=='') {
+                    $(this).button('option', 'disabled', true);
+                }
+	        },
 	        onclick: function(e) {
-	            $('.cms-container').loadPanel($(this).prop('href'));
+	            var gridField=this.getGridField();
+	            var dropdown=gridField.find('.addNewItemTypeButton select.dropdown');
+	            if(dropdown.val()=='') {
+	                statusMessage('You must select an option from the dropdown', 'bad');
+	            }else {
+	                $('.cms-container').loadPanel($(this).prop('href'));
+	            }
 	            
 	            e.stopPropagation();
 	            return false;
