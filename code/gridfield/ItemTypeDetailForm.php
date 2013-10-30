@@ -31,6 +31,10 @@ class ItemTypeDetailForm extends GridFieldDetailForm {
 }
 
 class ItemTypeDetailForm_ItemRequest extends GridFieldDetailForm_ItemRequest {
+    private static $allowed_actions=array(
+                                            'edit'
+                                        );
+    
     /**
      * Handles the new/edit screen
      * @param {SS_HTTPRequest} $request HTTP Request

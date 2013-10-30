@@ -7,7 +7,7 @@ Adds type/class picking functionality to SilverStripe 3.0's GridField.
 * Ed Chipman ([UndefinedOffset](https://github.com/UndefinedOffset))
 
 ## Requirements
-* SilverStripe 3.x
+* SilverStripe 3.1.0+
 
 
 ## Installation
