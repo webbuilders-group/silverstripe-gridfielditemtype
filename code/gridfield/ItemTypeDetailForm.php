@@ -53,7 +53,7 @@ class ItemTypeDetailForm_ItemRequest extends GridFieldDetailForm_ItemRequest {
                         user_error('The item type "'.htmlentities($request->getVar('ItemType')).'" is not one of the available item types', E_USER_ERROR);
                     }
                     
-                    $form->setFormAction($form->FormAction().'?ItemType='.$request->getVar('ItemType'));
+                    $form->setFormAction(Controller::join_links($form->FormAction(), '?ItemType='.$request->getVar('ItemType')));
                 }else {
                     user_error('You must have the GridField Component "AddNewItemTypeButton" in your GridField config', E_USER_ERROR);
                 }
