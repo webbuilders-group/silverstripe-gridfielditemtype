@@ -83,7 +83,8 @@ class AddNewItemTypeButton implements GridField_HTMLProvider {
                             ));
         
         
-        
+
+        Requirements::css(GRIDFIELD_ITEMTYPE_BASE.'/css/AddNewItemTypeButton.css');
         Requirements::javascript(GRIDFIELD_ITEMTYPE_BASE.'/javascript/AddNewItemTypeButton.js');
         
         return array(
