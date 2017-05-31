@@ -20,7 +20,7 @@ Adds type/class picking functionality to SilverStripe 3.0's GridField. Use the 3
 ## Usage
 If you are working with one of the pre-configured GridFieldConfigs you must first remove the default GridFieldDetailForm and GridFieldAddNewButton components replacing them with ItemTypeDetailForm and AddNewItemTypeButton respectively
 ```php
-$config=GridFieldConfig_RecordEditor::create(10);
+$config = GridFieldConfig_RecordEditor::create(10);
 $config->removeComponentsByType('GridFieldAddNewButton');
 $config->removeComponentsByType('GridFieldDetailForm');
 $config->addComponent(new AddNewItemTypeButton($yourOptionsMap, 'buttons-before-left'));
@@ -29,7 +29,7 @@ $config->addComponent(new ItemTypeDetailForm());
 
 If you are using the base GridField config you need to add both the AddNewItemTypeButton and ItemTypeDetailForm to your config
 ```php
-$config=GridFieldConfig_Base::create(10);
+$config = GridFieldConfig_Base::create(10);
 $config->addComponent(new AddNewItemTypeButton($yourOptionsMap, 'buttons-before-left'));
 $config->addComponent(new ItemTypeDetailForm());
 ```
