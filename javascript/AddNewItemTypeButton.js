@@ -1,7 +1,9 @@
 (function($) {
     $.entwine('ss', function($) {
         $('.ss-gridfield .addNewItemTypeButton select.dropdown').entwine({
-            onmatch: function() {
+            onadd: function() {
+                this._super();
+                
                 var gridField=this.getGridField();
                 var button=gridField.find('.addNewItemTypeButton .new-link');
                 var href=button.attr('href');
@@ -41,6 +43,8 @@
          */
 	    $('.cms .ss-gridfield .new-item-type-add').entwine({
 	        onmatch: function() {
+                this._super();
+                
 	            var gridField=this.getGridField();
                 var dropdown=gridField.find('.addNewItemTypeButton select.dropdown');
                 if(dropdown.val()=='') {
