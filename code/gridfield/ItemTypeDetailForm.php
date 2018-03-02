@@ -38,8 +38,9 @@ class ItemTypeDetailForm extends GridFieldDetailForm {
 
 class ItemTypeDetailForm_ItemRequest extends GridFieldDetailForm_ItemRequest {
     private static $allowed_actions=array(
-                                            'edit'
-                                        );
+                                        'edit',
+                                        'ItemEditForm'
+                                    );
     
     /**
      * Handles the new/edit screen
@@ -77,10 +78,21 @@ class ItemTypeDetailForm_ItemRequest extends GridFieldDetailForm_ItemRequest {
         }else {
             // If not requested by ajax, we need to render it within the controller context+template
             return $controller->customise(array(
-                                                // TODO CMS coupling
                                                 'Content' => $return,
                                             ));
         }
+    }
+    
+    /**
+     * Generates the form with the item type in the action url
+     * @return Form
+     */
+    public function ItemEditForm() {
+        $form=parent::ItemEditForm();
+        
+        $form->setFormAction(Controller::join_links($form->FormAction(), '?ItemType='.rawurlencode($this->request->getVar('ItemType'))));
+        
+        return $form;
     }
 }
 ?>
