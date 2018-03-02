@@ -38,50 +38,8 @@ class ItemTypeDetailForm extends GridFieldDetailForm {
 
 class ItemTypeDetailForm_ItemRequest extends GridFieldDetailForm_ItemRequest {
     private static $allowed_actions=array(
-                                        'edit',
                                         'ItemEditForm'
                                     );
-    
-    /**
-     * Handles the new/edit screen
-     * @param {SS_HTTPRequest} $request HTTP Request
-     * @return {string} HTML to be rendered
-     */
-    public function edit($request) {
-        $controller=$this->getToplevelController();
-        $form=$this->ItemEditForm($this->gridField, $request);
-        
-        if($this->record->ID==0) {
-            if($request->getVar('ItemType')) {
-                if($addButton=$this->gridField->getConfig()->getComponentByType('AddNewItemTypeButton')) {
-                    $values=$addButton->getRawDropdownValues();
-                    
-                    if(!array_key_exists($request->getVar('ItemType'), $values)) {
-                        user_error('The item type "'.htmlentities($request->getVar('ItemType')).'" is not one of the available item types', E_USER_ERROR);
-                    }
-                    
-                    $form->setFormAction(Controller::join_links($form->FormAction(), '?ItemType='.$request->getVar('ItemType')));
-                }else {
-                    user_error('You must have the GridField Component "AddNewItemTypeButton" in your GridField config', E_USER_ERROR);
-                }
-            }
-        }
-        
-        
-        $return=$this->customise(array(
-                                        'Backlink'=>($controller->hasMethod('Backlink') ? $controller->Backlink():$controller->Link()),
-                                        'ItemEditForm'=>$form,
-                                    ))->renderWith($this->template);
-        
-        if($request->isAjax()) {
-            return $return;
-        }else {
-            // If not requested by ajax, we need to render it within the controller context+template
-            return $controller->customise(array(
-                                                'Content' => $return,
-                                            ));
-        }
-    }
     
     /**
      * Generates the form with the item type in the action url
@@ -90,7 +48,21 @@ class ItemTypeDetailForm_ItemRequest extends GridFieldDetailForm_ItemRequest {
     public function ItemEditForm() {
         $form=parent::ItemEditForm();
         
-        $form->setFormAction(Controller::join_links($form->FormAction(), '?ItemType='.rawurlencode($this->request->getVar('ItemType'))));
+        if(!$this->record->exists() && $this->request->getVar('ItemType')) {
+            if($addButton=$this->gridField->getConfig()->getComponentByType('AddNewItemTypeButton')) {
+                $values=$addButton->getRawDropdownValues();
+                
+                if(!array_key_exists($this->request->getVar('ItemType'), $values)) {
+                    user_error('The item type "'.htmlentities($request->getVar('ItemType')).'" is not one of the available item types', E_USER_ERROR);
+                }
+                
+                $form->setFormAction(Controller::join_links($form->FormAction(), '?ItemType='.rawurlencode($this->request->getVar('ItemType'))));
+            }else {
+                user_error('You must have the GridField Component "AddNewItemTypeButton" in your GridField config', E_USER_ERROR);
+            }
+        }else if(!$this->record->exists()) {
+            user_error('No item type selected', E_USER_ERROR);
+        }
         
         return $form;
     }
