@@ -1,4 +1,9 @@
 <?php
+
+namespace gridfielditemtype\code\gridfield;
+
+use SilverStripe\Forms\GridField\GridField_HTMLProvider;
+
 /**
  * @package forms
  */

@@ -1,4 +1,10 @@
 <?php
+
+namespace gridfielditemtype\code\gridfield;
+
+use SilverStripe\Forms\GridField\GridFieldDetailForm;
+use SilverStripe\Forms\GridField\GridFieldDetailForm_ItemRequest;
+
 class ItemTypeDetailForm extends GridFieldDetailForm {
     /**
      * Handles the request for an item
