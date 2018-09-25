@@ -1,8 +1,9 @@
 <?php
 
-namespace gridfielditemtype\code\gridfield;
+namespace WebBuildersGroup\GridField;
 
 use SilverStripe\Forms\GridField\GridFieldDetailForm_ItemRequest;
+use SilverStripe\Control\Controller;
 
 /**
  * Description of ItemTypeDetailForm_ItemRequest
@@ -21,7 +22,7 @@ class ItemTypeDetailForm_ItemRequest extends GridFieldDetailForm_ItemRequest {
         
         if($this->record) {
             if(!$this->record->exists() && $this->request->getVar('ItemType')) {
-                if($addButton=$this->gridField->getConfig()->getComponentByType('AddNewItemTypeButton')) {
+                if($addButton=$this->gridField->getConfig()->getComponentByType('WebBuildersGroup\GridField\AddNewItemTypeButton')) {
                     $values=$addButton->getRawDropdownValues();
                     
                     if(!array_key_exists($this->request->getVar('ItemType'), $values)) {

@@ -1,8 +1,12 @@
 <?php
 
-namespace gridfielditemtype\code\gridfield;
+namespace WebBuildersGroup\GridField;
 
 use SilverStripe\Forms\GridField\GridField_HTMLProvider;
+use SilverStripe\View\ArrayData;
+use SilverStripe\ORM\ArrayList;
+use SilverStripe\View\Requirements;
+use SilverStripe\Control\Controller;
 
 /**
  * @package forms
@@ -89,11 +93,11 @@ class AddNewItemTypeButton implements GridField_HTMLProvider {
         
         
 
-        Requirements::css(GRIDFIELD_ITEMTYPE_BASE.'/css/AddNewItemTypeButton.css');
-        Requirements::javascript(GRIDFIELD_ITEMTYPE_BASE.'/javascript/AddNewItemTypeButton.js');
+        Requirements::css('webbuilders-group/silverstripe-gridfielditemtype:css/AddNewItemTypeButton.css');
+        Requirements::javascript('webbuilders-group/silverstripe-gridfielditemtype:javascript/AddNewItemTypeButton.js');
         
         return array(
-                    $this->_targetFragment=>$data->renderWith('AddNewItemTypeButton'),
+                    $this->_targetFragment=>$data->renderWith('WebBuildersGroup/GridField/Includes/AddNewItemTypeButton'),
                 );
     }
 }

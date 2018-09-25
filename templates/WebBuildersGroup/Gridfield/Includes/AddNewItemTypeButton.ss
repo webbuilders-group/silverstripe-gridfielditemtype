@@ -12,6 +12,5 @@
             </select>
         </div>
     <% end_if %>
-    
-    <a href="$NewLink" class="action action-detail ss-ui-action-constructive ss-ui-button ui-button ui-widget ui-state-default ui-corner-all new new-link new-item-type-add" data-icon="add" style="vertical-align: top;">$ButtonName</a>
+    <a href="$NewLink" class="action action-detail btn btn-primary font-icon-plus-circled new new-link new-item-type-add" data-icon="add" style="vertical-align: top;">$ButtonName</a>
 </div>

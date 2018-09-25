@@ -8,9 +8,8 @@
                 var button=gridField.find('.addNewItemTypeButton .new-link');
                 var href=button.attr('href');
                 var select=$(this);
-                
                 href=href.replace(/(\?|&)ItemType=(.*?)$/, '');
-                href+=(href.indexOf('?')>=0 ? '&':'?')+'ItemType='+$(this).val();
+                href+=(href.indexOf('?')>=0 ? '&':'?')+'ItemType='+encodeURIComponent($(this).val());
                 
                 button.attr('href', href);
                 button.on('buttoncreate', function(e, ui) {
@@ -26,7 +25,7 @@
                 var href=button.attr('href');
                 
                 href=href.replace(/(\?|&)ItemType=(.*?)$/, '');
-                href+=(href.indexOf('?')>=0 ? '&':'?')+'ItemType='+$(this).val();
+                href+=(href.indexOf('?')>=0 ? '&':'?')+'ItemType='+encodeURIComponent($(this).val());
                 
                 button.attr('href', href);
                 
