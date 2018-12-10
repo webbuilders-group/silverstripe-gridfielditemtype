@@ -1,5 +1,5 @@
 <?php
-namespace WebBuildersGroup\GridField\ItemType;
+namespace WebbuildersGroup\GridField\ItemType;
 
 use SilverStripe\Forms\GridField\GridFieldDetailForm_ItemRequest;
 use SilverStripe\Control\Controller;
