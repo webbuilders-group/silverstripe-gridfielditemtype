@@ -1,11 +1,11 @@
 <?php
-
-namespace WebBuildersGroup\GridField;
+namespace WebbuildersGroup\ItemType;
 
 use SilverStripe\Forms\GridField\GridFieldDetailForm;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DataList;
 use SilverStripe\Core\Injector\Injector;
+
 
 class ItemTypeDetailForm extends GridFieldDetailForm {
     /**

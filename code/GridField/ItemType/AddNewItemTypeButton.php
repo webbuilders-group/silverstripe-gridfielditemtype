@@ -1,12 +1,12 @@
 <?php
-
-namespace WebBuildersGroup\GridField;
+namespace WebbuildersGroup\GridField\ItemType;
 
 use SilverStripe\Forms\GridField\GridField_HTMLProvider;
 use SilverStripe\View\ArrayData;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\View\Requirements;
 use SilverStripe\Control\Controller;
+
 
 /**
  * @package forms
