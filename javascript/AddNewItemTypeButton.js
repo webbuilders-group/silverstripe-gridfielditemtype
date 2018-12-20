@@ -4,17 +4,20 @@
             onadd: function() {
                 this._super();
                 
+                //Make sure the parent gets the width of the dropdown
+                this.parent().width(this.width());
+                
                 var gridField=this.getGridField();
                 var button=gridField.find('.addNewItemTypeButton .new-link');
                 var href=button.attr('href');
-                var select=$(this);
+                var select=this;
                 href=href.replace(/(\?|&)ItemType=(.*?)$/, '');
                 href+=(href.indexOf('?')>=0 ? '&':'?')+'ItemType='+encodeURIComponent($(this).val());
                 
                 button.attr('href', href);
                 button.on('buttoncreate', function(e, ui) {
                     if(select.val()=='') {
-                        button.button('option', 'disabled', true);
+                        button.addClass('disabled');
                     }
                 });
             },
@@ -30,9 +33,9 @@
                 button.attr('href', href);
                 
                 if($(this).val()=='') {
-                    button.button("option", "disabled", true);
+                    button.addClass('disabled');
                 }else {
-                    button.button("option", "disabled", false);
+                    button.removeClass('disabled');
                 }
             }
         });
@@ -47,7 +50,7 @@
 	            var gridField=this.getGridField();
                 var dropdown=gridField.find('.addNewItemTypeButton select.dropdown');
                 if(dropdown.val()=='') {
-                    $(this).button('option', 'disabled', true);
+                    this.addClass('disabled');
                 }
 	        },
 	        onclick: function(e) {
@@ -64,4 +67,10 @@
 	        }
 	    });
     });
+    
+    
+    function statusMessage(text, type) {
+        text = jQuery('<div/>').text(text).html(); // Escape HTML entities in text
+        jQuery.noticeAdd({text: text, type: type, stayTime: 5000, inEffect: {left: '0', opacity: 'show'}});
+    }
 })(jQuery);
