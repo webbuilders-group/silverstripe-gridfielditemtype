@@ -1,13 +1,13 @@
 GridFieldItemType
 =================
 
-Adds type/class picking functionality to SilverStripe 3.0's GridField. Use the 3.0 branch for compatability with SilverStripe 3.0.
+Adds type/class picking functionality to SilverStripe 4.0's GridField.
 
 ## Maintainer Contact
 * Ed Chipman ([UndefinedOffset](https://github.com/UndefinedOffset))
 
 ## Requirements
-* SilverStripe 3.1.0+
+* SilverStripe 4.1+
 
 
 ## Installation
@@ -20,15 +20,21 @@ Adds type/class picking functionality to SilverStripe 3.0's GridField. Use the 3
 ## Usage
 If you are working with one of the pre-configured GridFieldConfigs you must first remove the default GridFieldDetailForm and GridFieldAddNewButton components replacing them with ItemTypeDetailForm and AddNewItemTypeButton respectively
 ```php
+use WebbuildersGroup\GridField\ItemType\AddNewItemTypeButton;
+use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
+
 $config=GridFieldConfig_RecordEditor::create(10);
 $config->removeComponentsByType('GridFieldAddNewButton');
 $config->removeComponentsByType('GridFieldDetailForm');
-$config->addComponent(new AddNewItemTypeButton($yourOptionsMap, 'buttons-before-left'));
+$config->addComponent(new AddNewItemTypeButton($yourOptionsMap, 'buttons-before-left', 'empty string', 'default'));
 $config->addComponent(new ItemTypeDetailForm());
 ```
 
 If you are using the base GridField config you need to add both the AddNewItemTypeButton and ItemTypeDetailForm to your config
 ```php
+use WebbuildersGroup\GridField\ItemType\AddNewItemTypeButton;
+use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
+
 $config=GridFieldConfig_Base::create(10);
 $config->addComponent(new AddNewItemTypeButton($yourOptionsMap, 'buttons-before-left'));
 $config->addComponent(new ItemTypeDetailForm());
