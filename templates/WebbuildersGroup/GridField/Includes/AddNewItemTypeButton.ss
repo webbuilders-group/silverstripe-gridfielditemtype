@@ -7,7 +7,7 @@
                 <% end_if %>
                 
                 <% loop $DropdownValues %>
-                    <option value="$Class">$Title</option>
+                    <option value="$Class"<% if $Class==$Up.Default %> selected="selected"<% end_if %>>$Title</option>
                 <% end_loop %>
             </select>
         </div>

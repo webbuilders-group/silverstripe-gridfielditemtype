@@ -20,14 +20,16 @@ class AddNewItemTypeButton implements GridField_HTMLProvider {
     protected $_rawDropdownValues;
     
     protected $_emptyLabel=null;
+    protected $_default=null;
     
     /**
      * Target fragment to assign the button to
      * @param {array} Map of class name/label elements to use in the template each item should have a Class key and a Title key
      * @param {string} $targetFragment Target fragment to place the button in
      * @param {string} $emptyLabel Label for empty option, leave null to exclude
+     * @param {string} $default The default value to select
      */
-    public function __construct(array $dropdownValues, $targetFragment='before', $emptyLabel=null) {
+    public function __construct(array $dropdownValues, $targetFragment='before', $emptyLabel=null, $default=null) {
         $this->_targetFragment=$targetFragment;
         $this->_rawDropdownValues=$dropdownValues;
         
@@ -41,6 +43,7 @@ class AddNewItemTypeButton implements GridField_HTMLProvider {
         
         $this->_dropdownValues=$tmp;
         $this->_emptyLabel=$emptyLabel;
+        $this->_default=$default;
     }
     
     /**
@@ -88,7 +91,8 @@ class AddNewItemTypeButton implements GridField_HTMLProvider {
                                 'NewLink'=>Controller::join_links($gridField->Link('item'), 'new'),
                                 'ButtonName'=>$this->_buttonName,
                                 'EmptyLabel'=>htmlentities($this->_emptyLabel),
-                                'DropdownValues'=>$this->_dropdownValues
+                                'DropdownValues'=>$this->_dropdownValues,
+                                'Default'=>$this->_default
                             ));
         
         
