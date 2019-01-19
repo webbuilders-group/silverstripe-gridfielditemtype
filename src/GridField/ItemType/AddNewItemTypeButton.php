@@ -101,7 +101,7 @@ class AddNewItemTypeButton implements GridField_HTMLProvider {
         Requirements::javascript('webbuilders-group/silverstripe-gridfielditemtype:javascript/AddNewItemTypeButton.js');
         
         return array(
-                    $this->_targetFragment=>$data->renderWith('WebBuildersGroup/GridField/Includes/AddNewItemTypeButton'),
+                    $this->_targetFragment=>$data->renderWith(AddNewItemTypeButton::class),
                 );
     }
 }
