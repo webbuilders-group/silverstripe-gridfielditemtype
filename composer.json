@@ -11,12 +11,10 @@
             "role": "Developer"
         }
     ],
-
     "require":
     {
         "silverstripe/framework": "~4.1"
     },
-
     "support": {
         "issues": "https://github.com/webbuilders-group/silverstripe-gridfielditemtype/issues"
     },
@@ -25,5 +23,10 @@
             "css",
             "javascript"
         ]
+    },
+    "autoload": {
+        "psr-4": {
+            "WebbuildersGroup\\GridField\\ItemType\\": "src/"
+        }
     }
 }

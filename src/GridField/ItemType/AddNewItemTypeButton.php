@@ -7,11 +7,11 @@ use SilverStripe\ORM\ArrayList;
 use SilverStripe\View\Requirements;
 use SilverStripe\Control\Controller;
 
-
 /**
  * @package forms
  */
-class AddNewItemTypeButton implements GridField_HTMLProvider {
+class AddNewItemTypeButton implements GridField_HTMLProvider
+{
     protected $_targetFragment;
     
     protected $_buttonName;
@@ -19,8 +19,8 @@ class AddNewItemTypeButton implements GridField_HTMLProvider {
     protected $_dropdownValues;
     protected $_rawDropdownValues;
     
-    protected $_emptyLabel=null;
-    protected $_default=null;
+    protected $_emptyLabel = null;
+    protected $_default = null;
     
     /**
      * Target fragment to assign the button to
@@ -29,21 +29,22 @@ class AddNewItemTypeButton implements GridField_HTMLProvider {
      * @param {string} $emptyLabel Label for empty option, leave null to exclude
      * @param {string} $default The default value to select
      */
-    public function __construct(array $dropdownValues, $targetFragment='before', $emptyLabel=null, $default=null) {
-        $this->_targetFragment=$targetFragment;
-        $this->_rawDropdownValues=$dropdownValues;
+    public function __construct(array $dropdownValues, $targetFragment = 'before', $emptyLabel = null, $default = null)
+    {
+        $this->_targetFragment = $targetFragment;
+        $this->_rawDropdownValues = $dropdownValues;
         
-        $tmp=new ArrayList();
-        foreach($this->_rawDropdownValues as $class=>$label) {
-            $tmp->push(new ArrayData(array(
-                                            'Class'=>$class,
-                                            'Title'=>$label
-                                        )));
+        $tmp = new ArrayList();
+        foreach ($this->_rawDropdownValues as $class => $label) {
+            $tmp->push(new ArrayData([
+                'Class' => $class,
+                'Title' => $label,
+            ]));
         }
         
-        $this->_dropdownValues=$tmp;
-        $this->_emptyLabel=$emptyLabel;
-        $this->_default=$default;
+        $this->_dropdownValues = $tmp;
+        $this->_emptyLabel = $emptyLabel;
+        $this->_default = $default;
     }
     
     /**
@@ -51,8 +52,9 @@ class AddNewItemTypeButton implements GridField_HTMLProvider {
      * @param {string} Label on the button
      * @return {AddNewItemTypeButton}
      */
-    public function setButtonName($name) {
-        $this->_buttonName=$name;
+    public function setButtonName($name)
+    {
+        $this->_buttonName = $name;
         
         return $this;
     }
@@ -62,8 +64,9 @@ class AddNewItemTypeButton implements GridField_HTMLProvider {
      * @param {string} $val Empty option value, set to null to remove
      * @return {AddNewItemTypeButton}
      */
-    public function setEmptyLabel($val) {
-        $this->_emptyLabel=$val;
+    public function setEmptyLabel($val)
+    {
+        $this->_emptyLabel = $val;
         
         return $this;
     }
@@ -72,7 +75,8 @@ class AddNewItemTypeButton implements GridField_HTMLProvider {
      * Gets the dropdown values
      * @return {array} Map of class name/label elements to use in the template each item should have a Class key and a Title key
      */
-    public function getRawDropdownValues() {
+    public function getRawDropdownValues()
+    {
         return $this->_rawDropdownValues;
     }
     
@@ -80,29 +84,29 @@ class AddNewItemTypeButton implements GridField_HTMLProvider {
      * Returns a map where the keys are fragment names and the values are pieces of HTML to add to these fragments.
      * @return {array} Fragments to be used
      */
-    public function getHTMLFragments($gridField) {
-        if(!$this->_buttonName) {
+    public function getHTMLFragments($gridField)
+    {
+        if (!$this->_buttonName) {
             // provide a default button name, can be changed by calling {@link setButtonName()} on this component
-            $this->_buttonName=_t('GridField.Add', 'Add {name}', array('name'=>singleton($gridField->getModelClass())->i18n_singular_name()));
+            $this->_buttonName = _t('GridField.Add', 'Add {name}', ['name' => singleton($gridField->getModelClass())->i18n_singular_name()]);
         }
         
         
-        $data=new ArrayData(array(
-                                'NewLink'=>Controller::join_links($gridField->Link('item'), 'new'),
-                                'ButtonName'=>$this->_buttonName,
-                                'EmptyLabel'=>htmlentities($this->_emptyLabel),
-                                'DropdownValues'=>$this->_dropdownValues,
-                                'Default'=>$this->_default
-                            ));
+        $data = new ArrayData([
+            'NewLink' => Controller::join_links($gridField->Link('item'), 'new'),
+            'ButtonName' => $this->_buttonName,
+            'EmptyLabel' => htmlentities($this->_emptyLabel),
+            'DropdownValues' => $this->_dropdownValues,
+            'Default' => $this->_default
+        ]);
         
         
 
         Requirements::css('webbuilders-group/silverstripe-gridfielditemtype:css/AddNewItemTypeButton.css');
         Requirements::javascript('webbuilders-group/silverstripe-gridfielditemtype:javascript/AddNewItemTypeButton.js');
         
-        return array(
-                    $this->_targetFragment=>$data->renderWith(AddNewItemTypeButton::class),
-                );
+        return [
+            $this->_targetFragment => $data->renderWith(AddNewItemTypeButton::class),
+        ];
     }
 }
-?>
