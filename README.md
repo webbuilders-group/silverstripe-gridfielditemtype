@@ -1,7 +1,7 @@
 GridFieldItemType
 =================
 
-Adds type/class picking functionality to SilverStripe 4.0's GridField.
+Adds type/class picking functionality to SilverStripe 4's GridField.
 
 ## Maintainer Contact
 * Ed Chipman ([UndefinedOffset](https://github.com/UndefinedOffset))

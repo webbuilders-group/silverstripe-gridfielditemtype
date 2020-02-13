@@ -1,6 +1,6 @@
 {
     "name": "webbuilders-group/silverstripe-gridfielditemtype",
-    "description": "Adds type/class picking functionality to SilverStripe 4.0's GridField",
+    "description": "Adds type/class picking functionality to SilverStripe 4's GridField",
     "type": "silverstripe-vendormodule",
     "keywords": ["silverstripe", "gridfield"],
     "license": "BSD-3-Clause",
@@ -13,12 +13,16 @@
     ],
     "require":
     {
+        "php": ">=7.1.0",
         "silverstripe/framework": "~4.1"
     },
     "support": {
         "issues": "https://github.com/webbuilders-group/silverstripe-gridfielditemtype/issues"
     },
     "extra": {
+        "branch-alias": {
+            "dev-master": "2.1.x-dev"
+        },
         "expose": [
             "css",
             "javascript"
