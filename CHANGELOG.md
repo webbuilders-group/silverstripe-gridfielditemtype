@@ -1,5 +1,8 @@
 # Change Log
 
+## [2.1.1](https://github.com/webbuilders-group/silverstripe-gridfielditemtype/tree/2.1.1) (2020-02-14)
+[Full Changelog](https://github.com/webbuilders-group/silverstripe-gridfielditemtype/compare/2.1.0...2.1.1)
+
 ## [2.1.0](https://github.com/webbuilders-group/silverstripe-gridfielditemtype/tree/2.1.0) (2020-02-13)
 [Full Changelog](https://github.com/webbuilders-group/silverstripe-gridfielditemtype/compare/2.0.0...2.1.0)
 

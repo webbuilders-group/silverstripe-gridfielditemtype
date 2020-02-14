@@ -1,10 +1,12 @@
 <?php
 namespace WebbuildersGroup\GridField\ItemType;
 
-use SilverStripe\Forms\GridField\GridFieldDetailForm_ItemRequest;
 use SilverStripe\Control\Controller;
+use SilverStripe\Versioned\VersionedGridFieldItemRequest;
 
-class ItemTypeDetailForm_ItemRequest extends GridFieldDetailForm_ItemRequest
+if (!class_exists(VersionedGridFieldItemRequest::class)) return;
+
+class VersionedItemTypeDetailForm_ItemRequest extends VersionedGridFieldItemRequest
 {
     private static $allowed_actions = [
         'ItemEditForm'

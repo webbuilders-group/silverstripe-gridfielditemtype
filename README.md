@@ -40,4 +40,11 @@ $config->addComponent(new AddNewItemTypeButton($yourOptionsMap, 'buttons-before-
 $config->addComponent(new ItemTypeDetailForm());
 ```
 
+If you are managing a versioned object you must override the item request class using:
+```php
+use WebbuildersGroup\GridField\ItemType\VersionedItemTypeDetailForm_ItemRequest;
+
+$detailForm->setItemRequestClass(VersionedItemTypeDetailForm_ItemRequest::class);
+```
+
 Note: All options in the type dropdown must be decendents of the model class.
