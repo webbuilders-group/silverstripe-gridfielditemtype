@@ -24,7 +24,7 @@ class ItemTypeDetailForm_ItemRequest extends GridFieldDetailForm_ItemRequest
                     $values = $addButton->getRawDropdownValues();
                     
                     if (!array_key_exists($this->request->getVar('ItemType'), $values)) {
-                        user_error('The item type "' . htmlentities($request->getVar('ItemType')) . '" is not one of the available item types', E_USER_ERROR);
+                        user_error('The item type "' . htmlentities($this->request->getVar('ItemType')) . '" is not one of the available item types', E_USER_ERROR);
                     }
                     
                     $form->setFormAction(Controller::join_links($form->FormAction(), '?ItemType=' . rawurlencode($this->request->getVar('ItemType'))));
