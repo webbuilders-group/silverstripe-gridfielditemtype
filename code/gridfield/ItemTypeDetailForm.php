@@ -13,7 +13,7 @@ class ItemTypeDetailForm extends GridFieldDetailForm {
             $record=$gridField->getList()->byId($request->param("ID"));
         }else if($request->getVar('ItemType')) {
             if($request->getVar('ItemType')==$gridField->getModelClass() || is_subclass_of($request->getVar('ItemType'), $gridField->getModelClass())) {
-                $record=Object::create($request->getVar('ItemType'));
+                $record=SS_Object::create($request->getVar('ItemType'));
             }else {
                 user_error('Class '.$request->getVar('ItemType').' is not a sub class of '.$gridField->getModelClass(), E_USER_ERROR);
             }
@@ -23,12 +23,12 @@ class ItemTypeDetailForm extends GridFieldDetailForm {
         
         $class=$this->getItemRequestClass();
         
-        $handler=Object::create($class, $gridField, $this, $record, $controller, $this->name);
+        $handler=SS_Object::create($class, $gridField, $this, $record, $controller, $this->name);
         $handler->setTemplate($this->template);
 
 		// if no validator has been set on the GridField and the record has a
 		// CMS validator, use that.
-		if(!$this->getValidator() && (method_exists($record, 'getCMSValidator') || $record instanceof Object && $record->hasMethod('getCMSValidator'))) {
+		if(!$this->getValidator() && (method_exists($record, 'getCMSValidator') || $record instanceof SS_Object && $record->hasMethod('getCMSValidator'))) {
 			$this->setValidator($record->getCMSValidator());
 		}
         
