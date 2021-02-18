@@ -30,7 +30,7 @@
     },
     "autoload": {
         "psr-4": {
-            "WebbuildersGroup\\GridField\\ItemType\\": "src/"
+            "WebbuildersGroup\\GridField\\ItemType\\": "src/GridField/ItemType/"
         }
     }
 }
