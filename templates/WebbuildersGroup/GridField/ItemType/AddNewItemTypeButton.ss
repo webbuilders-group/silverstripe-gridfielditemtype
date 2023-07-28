@@ -1,11 +1,11 @@
 <div class="addNewItemTypeButton">
     <% if $DropdownValues %>
-        <div class="field dropdown" style="display: inline-block;">
+        <div class="field dropdown">
             <select class="dropdown no-change-track">
                 <% if $EmptyLabel %>
                     <option value="">$EmptyLabel</option>
                 <% end_if %>
-                
+
                 <% loop $DropdownValues %>
                     <option value="$Class"<% if $Class==$Up.Default %> selected="selected"<% end_if %>>$Title</option>
                 <% end_loop %>

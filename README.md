@@ -23,11 +23,11 @@ If you are working with one of the pre-configured GridFieldConfigs you must firs
 use WebbuildersGroup\GridField\ItemType\AddNewItemTypeButton;
 use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
 
-$config=GridFieldConfig_RecordEditor::create(10);
-$config->removeComponentsByType('GridFieldAddNewButton');
-$config->removeComponentsByType('GridFieldDetailForm');
-$config->addComponent(new AddNewItemTypeButton($yourOptionsMap, 'buttons-before-left', 'empty string', 'default'));
-$config->addComponent(new ItemTypeDetailForm());
+$config = GridFieldConfig_RecordEditor::create(10);
+->removeComponentsByType('GridFieldAddNewButton::class)
+    ->removeComponentsByType(GridFieldDetailForm::class)
+    ->addComponent(new AddNewItemTypeButton($yourOptionsMap, 'buttons-before-left', 'empty string', 'default'))
+    ->addComponent(new ItemTypeDetailForm());
 ```
 
 If you are using the base GridField config you need to add both the AddNewItemTypeButton and ItemTypeDetailForm to your config
