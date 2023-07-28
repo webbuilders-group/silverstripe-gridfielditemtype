@@ -6,10 +6,11 @@ use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldDetailForm;
 use SilverStripe\ORM\DataObject;
-use SilverStripe\ORM\DataList;
 
 class ItemTypeDetailForm extends GridFieldDetailForm
 {
+    protected $itemRequestClass = ItemTypeDetailForm_ItemRequest::class;
+
     /**
      * @param GridField $gridField
      * @param HTTPRequest $request
