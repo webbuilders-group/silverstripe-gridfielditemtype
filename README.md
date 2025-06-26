@@ -24,7 +24,7 @@ use WebbuildersGroup\GridField\ItemType\AddNewItemTypeButton;
 use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
 
 $config = GridFieldConfig_RecordEditor::create(10);
-->removeComponentsByType('GridFieldAddNewButton::class)
+    ->removeComponentsByType(GridFieldAddNewButton::class)
     ->removeComponentsByType(GridFieldDetailForm::class)
     ->addComponent(new AddNewItemTypeButton($yourOptionsMap, 'buttons-before-left', 'empty string', 'default'))
     ->addComponent(new ItemTypeDetailForm());
