@@ -98,7 +98,8 @@ class AddNewItemTypeButton implements GridField_HTMLProvider
         }
 
 
-        $data = new ArrayData([
+        $class = (class_exists(LegacyArrayData::class) ? LegacyArrayData::class : ArrayData::class);
+        $data = new $class([
             'NewLink' => Controller::join_links($gridField->Link('item'), 'new'),
             'ButtonName' => $this->_buttonName,
             'EmptyLabel' => htmlentities($this->_emptyLabel),
